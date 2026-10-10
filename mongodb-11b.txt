@@ -1,0 +1,474 @@
+
+C:\Users\Dell>mongosh --version
+2.12.0
+
+C:\Users\Dell>mongosh
+Current Mongosh Log ID: 6abdf59bbcc6acfcc4f1d1d1
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-24T15:12:28.557+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use library
+switched to db library
+library> db
+library
+library> db.books.insertMany([
+|     {
+|         title: "The Great Gatsby",
+|         author: "F. Scott Fitzgerald",
+|         year: 1925,
+|         genre: "Classic",
+|         price: 450
+|     },
+|     {
+|         title: "1984",
+|         author: "George Orwell",
+|         year: 1949,
+|         genre: "Dystopian",
+|         price: 500
+|     },
+|     {
+|         title: "Animal Farm",
+|         author: "George Orwell",
+|         year: 1945,
+|         genre: "Dystopian",
+|         price: 350
+|     },
+|     {
+|         title: "To Kill a Mockingbird",
+|         author: "Harper Lee",
+|         year: 1960,
+|         genre: "Classic",
+|         price: 550
+|     },
+|     {
+|         title: "The Hobbit",
+|         author: "J.R.R. Tolkien",
+|         year: 1937,
+|         genre: "Fantasy",
+|         price: 600
+|     },
+|     {
+|         title: "Harry Potter",
+|         author: "J.K. Rowling",
+|         year: 1997,
+|         genre: "Fantasy",
+|         price: 700
+|     }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    '1': ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    '2': ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    '3': ObjectId('6abdf5c3bcc6acfcc4f1d1d5'),
+    '4': ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    '5': ObjectId('6abdf5c3bcc6acfcc4f1d1d7')
+  }
+}
+library> db.books.find()
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d5'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    year: 1960,
+    genre: 'Classic',
+    price: 550
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d7'),
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
+    year: 1997,
+    genre: 'Fantasy',
+    price: 700
+  }
+]
+library> db.books.find().pretty()
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d5'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    year: 1960,
+    genre: 'Classic',
+    price: 550
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d7'),
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
+    year: 1997,
+    genre: 'Fantasy',
+    price: 700
+  }
+]
+library> db.books.find().sort({ year: 1 })
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d5'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    year: 1960,
+    genre: 'Classic',
+    price: 550
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d7'),
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
+    year: 1997,
+    genre: 'Fantasy',
+    price: 700
+  }
+]
+library> db.books.find().sort({ year: -1 })
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d7'),
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
+    year: 1997,
+    genre: 'Fantasy',
+    price: 700
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d5'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    year: 1960,
+    genre: 'Classic',
+    price: 550
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  }
+]
+library> db.books.find().limit(3)
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  }
+]
+library> db.books.find().sort({ year: 1 }).limit(3)
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d2'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    genre: 'Classic',
+    price: 450
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  }
+]
+library> db.books.find({ genre: "Dystopian" })
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d3'),
+    title: '1984',
+    author: 'George Orwell',
+    year: 1949,
+    genre: 'Dystopian',
+    price: 500
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d4'),
+    title: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    genre: 'Dystopian',
+    price: 350
+  }
+]
+library> db.books.find({ genre: "Fantasy" })
+[
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d6'),
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    genre: 'Fantasy',
+    price: 600
+  },
+  {
+    _id: ObjectId('6abdf5c3bcc6acfcc4f1d1d7'),
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
+    year: 1997,
+    genre: 'Fantasy',
+    price: 700
+  }
+]
+library> db.books.createIndex({ author: 1 })
+author_1
+library> db.books.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { author: 1 }, name: 'author_1' }
+]
+library> db.books.aggregate([
+|     {
+|         $group: {
+|             _id: "$genre",
+|             count: { $sum: 1 }
+|         }
+|     }
+| ])
+[
+  { _id: 'Fantasy', count: 2 },
+  { _id: 'Classic', count: 2 },
+  { _id: 'Dystopian', count: 2 }
+]
+library> db.books.aggregate([
+|     {
+|         $group: {
+|             _id: "$genre",
+|             count: { $sum: 1 }
+|         }
+|     },
+|     {
+|         $sort: {
+|             count: -1
+|         }
+|     }
+| ])
+[
+  { _id: 'Dystopian', count: 2 },
+  { _id: 'Classic', count: 2 },
+  { _id: 'Fantasy', count: 2 }
+]
+library> db.books.aggregate([
+|     {
+|         $group: {
+|             _id: "$genre",
+|             avgPrice: { $avg: "$price" }
+|         }
+|     }
+| ])
+[
+  { _id: 'Dystopian', avgPrice: 425 },
+  { _id: 'Classic', avgPrice: 500 },
+  { _id: 'Fantasy', avgPrice: 650 }
+]
+library> db.books.aggregate([
+|     {
+|         $group: {
+|             _id: "$genre",
+|             avgPrice: { $avg: "$price" }
+|         }
+|     },
+|     {
+|         $sort: {
+|             avgPrice: -1
+|         }
+|     }
+| ])
+[
+  { _id: 'Fantasy', avgPrice: 650 },
+  { _id: 'Classic', avgPrice: 500 },
+  { _id: 'Dystopian', avgPrice: 425 }
+]
+library> db.books.aggregate([
+|     {
+|         $match: {
+|             year: { $gt: 1900 }
+|         }
+|     },
+|     {
+|         $group: {
+|             _id: "$genre",
+|             count: { $sum: 1 },
+|             avgPrice: { $avg: "$price" }
+|         }
+|     },
+|     {
+|         $sort: {
+|             count: -1
+|         }
+|     },
+|     {
+|         $project: {
+|             genre: "$_id",
+|             count: 1,
+|             avgPrice: 1,
+|             _id: 0
+|         }
+|     }
+| ])
+[
+  { count: 2, avgPrice: 425, genre: 'Dystopian' },
+  { count: 2, avgPrice: 500, genre: 'Classic' },
+  { count: 2, avgPrice: 650, genre: 'Fantasy' }
+]
+library>
